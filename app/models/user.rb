@@ -1,9 +1,22 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  email           :string(255)
+#  referral_code   :string(255)
+#  referrer_id     :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  organization_id :integer
+#
+
 class User < ActiveRecord::Base
     belongs_to :organization
     belongs_to :referrer, :class_name => "User", :foreign_key => "referrer_id"
     has_many :referrals, :class_name => "User", :foreign_key => "referrer_id"
     
-    attr_accessible :email
+    attr_accessible :email, :organization_id
 
     validates :email, :uniqueness => true, :format => { :with => /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/i, :message => "Invalid email format." }
     validates :referral_code, :uniqueness => true

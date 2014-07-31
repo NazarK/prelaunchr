@@ -34,6 +34,34 @@ html.home{
 	background: #EDECEA;
 }
 
+.page-1 {
+	font-family: Arial;
+	text-align: center;
+}
+.page-1 .border, .page-1 select, .page-1 input[type=submit] {
+	border: 2px solid black;
+	border-radius: 15px !important;
+	font-size:20px;
+	outline: none;
+	padding: 10px;
+}
+
+.page-1 select {
+  padding: 10px; 
+  border-radius: 20px !important;
+}
+
+.page-1 .email, .page-1 select {
+	width: 300px;
+}
+
+.page-1 input[type=submit] {
+	cursor: pointer;
+	background: #2cf;
+	color: white;
+	padding: 10px;
+}
+
 #home{
 	padding-bottom: 50px;
 }

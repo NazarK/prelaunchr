@@ -28,14 +28,14 @@ class UsersController < ApplicationController
                 )
             end
 
-            if cur_ip.count > 2
+            if cur_ip.count > 100
                 return redirect_to root_path
             else
                 cur_ip.count = cur_ip.count + 1
                 cur_ip.save
             end
 
-            @user = User.new(:email => params[:user][:email])
+            @user = User.new(:email => params[:user][:email], :organization_id => params[:user][:organization_id])
 
             @referred_by = User.find_by_referral_code(cookies[:h_ref])
 
@@ -91,7 +91,8 @@ class UsersController < ApplicationController
     private 
 
     def skip_first_page
-        if !Rails.application.config.ended
+        return if params[:force_first]=='true'
+        if !Rails.application.config.ended 
             email = cookies[:h_email]
             if email and !User.find_by_email(email).nil?
                 redirect_to '/refer-a-friend'
