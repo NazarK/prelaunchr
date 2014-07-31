@@ -8,10 +8,11 @@
             <b>GIVEAWAY</b><br>
         = form_for @user, :url => { :action => "create" } do |f|
             %p
-                = f.text_field :email, :placeholder => "Enter Email", :class => "email border"
+                = f.text_field :email, :placeholder => "enter email", :class => "email border"
             %p
-                = f.collection_select :organization_id, Organization.order(:name),:id,:name, include_blank: true, placeholder: "organization"
+                %div.select_wrap
+                    = f.collection_select :organization_id, Organization.order(:name),:id,:name, include_blank: "choose your organization"
             %p
                 <input class="submit" name="commit" type="submit" value="Step Inside" />
-        %div{style:'color:white;margin-top:100px;font-weight:bold;font-size:14px;'}
+        %div{style:'color:white;margin-top:80px;font-weight:bold;font-size:14px;'}
             OUR GIVEAWAY IS CURRENTLY ONLY FOR ORGANIZATION WE ARE LICENSED FOR BUT STILL WOULD LOVE TO HEAR FROM YOU  
