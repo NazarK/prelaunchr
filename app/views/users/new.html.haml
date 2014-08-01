@@ -8,10 +8,10 @@
             <b>GIVEAWAY</b><br>
         = form_for @user, :url => { :action => "create" } do |f|
             %p
-                = f.text_field :email, :placeholder => "enter email", :class => "email border"
+                = f.text_field :email, :placeholder => "enter email", :class => "email border", :required => true
             %p
                 %div.select_wrap
-                    = f.collection_select :organization_id, Organization.order(:name),:id,:name, include_blank: "choose your organization"
+                    = f.collection_select :organization_id, Organization.order(:name),:id,:name, { include_blank: "choose your organization" } ,  :required => true
             %p
                 <input class="submit" name="commit" type="submit" value="Step Inside" />
         %div{style:'color:white;margin-top:90px;font-weight:bold;font-size:14px;'}
