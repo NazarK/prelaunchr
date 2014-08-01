@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-    before_filter :skip_first_page, :only => :new
+    before_filter :skip_first_page, :only => [:new,:reset]
+
+
+    def reset
+      new
+    end
 
     def new
         @bodyId = 'home'
@@ -7,9 +12,7 @@ class UsersController < ApplicationController
 
         @user = User.new
 
-        respond_to do |format|
-            format.html # new.html.erb
-        end
+        render :new
     end
 
     def create
@@ -92,6 +95,14 @@ class UsersController < ApplicationController
 
     def skip_first_page
         return if params[:force_first]=='true'
+        if params.has_key? :reset || params[:action] == 'reset'
+            cookies.delete :h_email
+            cur_ip = IpAddress.find_by_address(request.env['HTTP_X_FORWARDED_FOR'])            
+            if cur_ip
+              cur_ip.delete
+            end
+        end
+
         if !Rails.application.config.ended 
             email = cookies[:h_email]
             if email and !User.find_by_email(email).nil?
