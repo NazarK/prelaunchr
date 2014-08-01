@@ -61,7 +61,17 @@ Prelaunchr::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'www.example.com' }
+  ActionMailer::Base.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => 'james-prelaunchr.herokuapp.com',
+    :authentication => :plain,
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.default_url_options = { :host => 'james-prelaunchr.herokuapp.com' }
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
