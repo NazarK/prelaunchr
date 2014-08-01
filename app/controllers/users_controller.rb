@@ -94,15 +94,14 @@ class UsersController < ApplicationController
     private 
 
     def skip_first_page
-        return if params[:force_first]=='true'
-        if params.has_key? :reset || params[:action] == 'reset'
+        if params[:action] == 'reset'
             cookies.delete :h_email
             cur_ip = IpAddress.find_by_address(request.env['HTTP_X_FORWARDED_FOR'])            
             if cur_ip
               cur_ip.delete
             end
         end
-
+        return if params[:force_first]=='true'
         if !Rails.application.config.ended 
             email = cookies[:h_email]
             if email and !User.find_by_email(email).nil?
