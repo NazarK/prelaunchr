@@ -3,16 +3,18 @@
         <div style='color:white;font-family:Arial;font-size:36px;margin-top:10px;text-transform:uppercase;text-align:center;'>
             Thank you for signing up
         </div>
-        <div class="share-wrap">
-            <p class="why brandon" style='margin-top:30px;'>Don't leave your friends behind</p>
-            <p class="title brandon" style='color:#0bf'>INVITE FRIENDS &<br>Earn Graphics</p>
-            <p class="subtitle brandon">Share your unique link via email, Facebook<br>or Twitter and earn Greekwall's Graphics for<br>each friend who signs up.</p>
-            <div class="copy-link brandon"><%= root_url %>?ref=<%= @user.referral_code %></div>
-            <% twitter_message = "#Shaving is evolving. Excited for @harrys to launch." %>
-            <div class="social-links">
-                <a href="http://www.facebook.com/sharer/sharer.php?u=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&title=Harrys" class="fb" target="_blank"></a>
-                <div class="sep"></div>
-                <a href="http://twitter.com/share?url=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&text=<%= CGI::escape(twitter_message) %>" class="twit" target="_blank"></a>
+        <div style='width:980px;margin: 0 auto;'>
+            <div class="share-wrap">
+                <p class="why brandon" style='margin-top:30px;'>Don't leave your friends behind</p>
+                <p class="title brandon" style='color:#0bf'>INVITE FRIENDS &<br>Earn Graphics</p>
+                <p class="subtitle brandon">Share your unique link via email, Facebook<br>or Twitter and earn Greekwall's Graphics for<br>each friend who signs up.</p>
+                <div class="copy-link brandon"><%= root_url %>?ref=<%= @user.referral_code %></div>
+                <% twitter_message = "#Shaving is evolving. Excited for @harrys to launch." %>
+                <div class="social-links">
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&title=Harrys" class="fb" target="_blank"></a>
+                    <div class="sep"></div>
+                    <a href="http://twitter.com/share?url=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&text=<%= CGI::escape(twitter_message) %>" class="twit" target="_blank"></a>
+                </div>
             </div>
         </div>
     </div>
