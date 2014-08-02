@@ -9,7 +9,7 @@
     <img src="<%= $HOST %><%= asset_path "refer/fb.png" %>" alt="Share on Facebook" style=" margin: 0; padding: 0; border: 0;">
     </a><br>
     Share it via twitter: 
-    <a href="http://twitter.com/share?url=<%= CGI::escape(ref_url) %>&text=<%= CGI::escape(ApplicationHelper::twitter_message) %>" style="outline: 0; border: 0;" target="_blank">
+    <a href="http://twitter.com/share?url=<%= CGI::escape(ref_url) %>&text=<%= CGI::escape(ApplicationHelper::twitter_message) %>" style="outline: 0; border: 0;text-decoration:none;" target="_blank">
         <img src="<%= $HOST %><%= asset_path "refer/twit.png"%>" alt="Share on Twitter" style="margin: 0; padding: 0; border: 0;">
     </a>
     <br>
