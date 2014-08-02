@@ -47,7 +47,8 @@ class User < ActiveRecord::Base
         self.referral_code = referral_code
     end
 
+    public
     def send_welcome_email
-        #UserMailer.signup_email(self).deliver
+        UserMailer.signup_email(self).deliver
     end
 end

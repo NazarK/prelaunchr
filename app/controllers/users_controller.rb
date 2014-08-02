@@ -2,6 +2,12 @@ class UsersController < ApplicationController
     before_filter :skip_first_page, :only => [:new,:reset]
 
 
+    def welcome_email_preview
+        $HOST = "http://#{request.host_with_port}"
+        @user = User.first
+        render "user_mailer/signup_email"
+    end
+
     def reset
       new
     end
@@ -16,7 +22,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        $HOST = request.host_with_port
+        $HOST = "http://#{request.host_with_port}"
         # Get user to see if they have already signed up
         @user = User.find_by_email(params[:user][:email]);
             
